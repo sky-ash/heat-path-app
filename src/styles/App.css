@@ -8,6 +8,35 @@
   padding: 20px;
 }
 
+/* Start page styling */
+.start-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.start-page h1 {
+  font-size: 32px;
+  margin-bottom: 30px;
+}
+
+.nav-button {
+  padding: 15px;
+  background-color: #ff4a4a;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  width: 200px;
+}
+
+.nav-button:hover {
+  background-color: #e94141;
+}
+
 /* Path Screen */
 .path {
   display: flex;
@@ -57,81 +86,4 @@
 .final-quiz.unlocked {
   background-color: gray;
   pointer-events: auto;
-}
-
-/* Lecture and Quiz screens */
-.lecture-screen, .quiz-screen {
-  margin: 0 auto;
-  max-width: 400px;
-  background-color: #2c2c2c;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-}
-
-.lecture h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
-}
-
-.card {
-  background-color: white;
-  color: black;
-  padding: 20px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  min-height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-button {
-  padding: 15px;
-  background-color: #ff4a4a;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-  margin: 10px 0;
-  width: 100%;
-  font-size: 16px;
-}
-
-button:hover {
-  background-color: #e94141;
-}
-
-.quiz-options button {
-  margin: 5px 0;
-}
-
-.correct {
-  background-color: #28a745;
-}
-
-.incorrect {
-  background-color: #dc3545;
-}
-
-/* Navigation Buttons */
-.nav-button {
-  background-color: #ff4a4a;
-  padding: 10px;
-  width: 100%;
-  border-radius: 10px;
-  color: white;
-  font-size: 16px;
-  border: none;
-  margin-top: 20px;
-  cursor: pointer;
-}
-
-.nav-button:hover {
-  background-color: #e94141;
-}
-
-.locked {
-  pointer-events: none;
-  opacity: 0.5;
 }
