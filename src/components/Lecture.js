@@ -25,15 +25,18 @@ const Lecture = ({ markCompleted }) => {
   };
 
   return (
-    <div className="lecture">
+    <div className="lecture-screen">
       <h2>{lesson.title}</h2>
       <div className="card">
         <p>{lesson.cards[cardIndex]}</p>
-        <button onClick={handleNext}>Next</button>
       </div>
+      <button onClick={handleNext} className="nav-button">Next</button>
       {viewedCards.size === lesson.cards.length - 1 && (
-        <button onClick={handleMarkCompleted}>Mark Completed</button>
+        <button onClick={handleMarkCompleted} className="nav-button">Mark Completed</button>
       )}
+      <button onClick={() => navigate("/path")} className="nav-button">
+        Back To Path
+      </button>
     </div>
   );
 };

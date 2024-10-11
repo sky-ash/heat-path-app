@@ -6,35 +6,49 @@ const Quiz = ({ markLectureCompleted }) => {
   const { id } = useParams();
   const lesson = lessons.find(l => l.id === parseInt(id));
   const [questionIndex, setQuestionIndex] = useState(0);
-  const [score, setScore] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
   const navigate = useNavigate();
 
   const handleAnswer = (option) => {
-    const isCorrect = lesson.quiz[questionIndex].answer === option;
-    if (isCorrect) {
-      setScore(score + 1);
+    setSelectedAnswer(option);
+    if (option === lesson.quiz[questionIndex].answer) {
+      setCorrectAnswers(correctAnswers + 1);
     }
+  };
 
-    if (questionIndex + 1 < lesson.quiz.length) {
-      setQuestionIndex(questionIndex + 1);
-    } else {
-      if (score + 1 === lesson.quiz.length) {
+  const handleNext = () => {
+    if (selectedAnswer === lesson.quiz[questionIndex].answer) {
+      if (questionIndex + 1 < lesson.quiz.length) {
+        setQuestionIndex(questionIndex + 1);
+        setSelectedAnswer(null);
+      } else {
         markLectureCompleted(parseInt(id));
         navigate("/path");
-      } else {
-        navigate(`/lecture/${id}`);
       }
+    } else {
+      navigate(`/lecture/${id}`);
     }
   };
 
   return (
-    <div className="quiz">
+    <div className="quiz-screen">
       <h2>{lesson.quiz[questionIndex].question}</h2>
-      {lesson.quiz[questionIndex].options.map((option, index) => (
-        <button key={index} onClick={() => handleAnswer(option)}>
-          {option}
-        </button>
-      ))}
+      <div className="quiz-options">
+        {lesson.quiz[questionIndex].options.map((option, index) => (
+          <button
+            key={index}
+            className={selectedAnswer === option ? (option === lesson.quiz[questionIndex].answer ? "correct" : "incorrect") : ""}
+            onClick={() => handleAnswer(option)}
+          >
+            {option}
+          </button>
+        ))}
+      </div>
+      <button onClick={handleNext} className="nav-button">Next</button>
+      <button onClick={() => navigate("/path")} className="nav-button">
+        Back To Path
+      </button>
     </div>
   );
 };
