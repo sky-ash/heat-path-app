@@ -10,9 +10,9 @@ const Path = ({ completedLectures }) => {
         {[1, 2, 3, 4].map((lecture, index) => (
           <div
             key={index}
-            className={`lecture ${completedLectures >= lecture ? 'unlocked' : 'locked'}`}
+            className={`lecture ${completedLectures + 1 >= lecture ? 'unlocked' : 'locked'}`}
           >
-            <Link to={completedLectures >= lecture ? `/lecture/${lecture}` : "#"}>
+            <Link to={completedLectures + 1 >= lecture ? `/lecture/${lecture}` : "#"}>
               {lecture}
             </Link>
           </div>
