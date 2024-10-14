@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "@material/web/button/filled-button.js";
 
 const StartPage = () => {
   const navigate = useNavigate();
@@ -11,9 +12,9 @@ const StartPage = () => {
   return (
     <div className="start-page">
       <h1>Welcome to Heat Path</h1>
-      <button onClick={handleViewPath} className="nav-button">
+      <md-filled-button raised onClick={handleViewPath}>
         View Path
-      </button>
+      </md-filled-button>
     </div>
   );
 };

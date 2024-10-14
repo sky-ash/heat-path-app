@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { lessons } from "../data/lessons";
 import { useParams, useNavigate } from "react-router-dom";
 import { useSwipeable } from "react-swipeable";
+import "@material/web/button/filled-button.js";
 
 const Lecture = ({ markCompleted }) => {
   const { id } = useParams();
@@ -48,28 +49,30 @@ const Lecture = ({ markCompleted }) => {
       <h2>{lesson.title}</h2>
 
       <div className="cards-container">
-        <button onClick={handlePrev} id="prev"/>
+        <md-filled-button onClick={handlePrev} id="prev"/>
         <div className="card">
           <p>{lesson.cards[cardIndex]}</p>
         </div>
-        <button onClick={handleNext} id="next"/>
+        <md-filled-button onClick={handleNext} id="next"/>
       </div>
-      <button 
+      <md-filled-button 
+        raised
         onClick={handleMarkCompleted} 
         className={`nav-button ${viewedCards.every(viewed => viewed) && !isCompleted ? '' : 'locked'}`}
       >
         {isCompleted ? "Already Completed" : "Mark Completed"}
-      </button>
-      <button 
+      </md-filled-button>
+      <md-filled-button 
+        raised
         onClick={() => navigate(`/quiz/${id}`)} 
         className={`nav-button ${isCompleted ? '' : 'locked'}`}
         title={isCompleted ? '' : 'Please complete the lecture before going to the quiz'}
       >
         Go To Quiz
-      </button>
-      <button onClick={() => navigate("/path")} className="nav-button">
+      </md-filled-button>
+      <md-filled-button raised onClick={() => navigate("/path")} className="nav-button">
         Back To Path
-      </button>
+      </md-filled-button>
     </div>
   );
 };

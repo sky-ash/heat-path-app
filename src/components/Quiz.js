@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { lessons } from "../data/lessons";
 import { useParams, useNavigate } from "react-router-dom";
+import "@material/web/button/filled-button.js";
 
 const Quiz = ({ markLectureCompleted }) => {
   const { id } = useParams();
@@ -36,19 +37,19 @@ const Quiz = ({ markLectureCompleted }) => {
       <h2>{lesson.quiz[questionIndex].question}</h2>
       <div className="quiz-options">
         {lesson.quiz[questionIndex].options.map((option, index) => (
-          <button
+          <md-filled-button
             key={index}
             className={selectedAnswer === option ? (option === lesson.quiz[questionIndex].answer ? "correct" : "incorrect") : ""}
             onClick={() => handleAnswer(option)}
           >
             {option}
-          </button>
+          </md-filled-button>
         ))}
       </div>
-      <button onClick={handleNext} className="nav-button">Next</button>
-      <button onClick={() => navigate("/path")} className="nav-button">
+      <md-filled-button raised onClick={handleNext} className="nav-button">Next</md-filled-button>
+      <md-filled-button raised onClick={() => navigate("/path")} className="nav-button">
         Back To Path
-      </button>
+      </md-filled-button>
     </div>
   );
 };
