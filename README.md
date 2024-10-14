@@ -1,28 +1,3 @@
-# Commands
-### npm commands
-#### check version (check if installed)
-```
-node -v
-npm -v
-```
-#### cd into directory (if not already)
-```
-cd path/to/app
-```
-#### create new app (if directory empty)
-```
-npx create-react-app .
-```
-### install 
-```
-npm install react-router-dom
-```
-### launch app
-```
-npm start
-```
-
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
