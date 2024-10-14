@@ -15,7 +15,7 @@ npx create-react-app .
 ```
 ### install 
 ```
-npm install react-router-do
+npm install react-router-dom
 ```
 ### launch app
 ```
