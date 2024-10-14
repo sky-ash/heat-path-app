@@ -8,6 +8,7 @@ const Lecture = ({ markCompleted }) => {
   const lesson = lessons.find(l => l.id === parseInt(id));
   const [cardIndex, setCardIndex] = useState(0);
   const [viewedCards, setViewedCards] = useState(Array(lesson.cards.length).fill(false));
+  const [isCompleted, setIsCompleted] = useState(false);
   const navigate = useNavigate();
 
   const handleNext = () => {
@@ -31,7 +32,7 @@ const Lecture = ({ markCompleted }) => {
   const handleMarkCompleted = () => {
     if (viewedCards.every(viewed => viewed)) {
       markCompleted(parseInt(id));
-      navigate(`/quiz/${id}`);
+      setIsCompleted(true);
     }
   };
 
@@ -54,8 +55,16 @@ const Lecture = ({ markCompleted }) => {
         onClick={handleMarkCompleted} 
         className={`nav-button ${viewedCards.every(viewed => viewed) ? '' : 'locked'}`}
       >
-        Mark Completed
+        {isCompleted ? "Already Completed" : "Mark Completed"}
       </button>
+      {isCompleted && (
+        <button 
+          onClick={() => navigate(`/quiz/${id}`)} 
+          className="nav-button"
+        >
+          Go To Quiz
+        </button>
+      )}
       <button onClick={() => navigate("/path")} className="nav-button">
         Back To Path
       </button>
