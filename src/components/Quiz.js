@@ -32,8 +32,21 @@ const Quiz = ({ markLectureCompleted }) => {
   };
 
   return (
+    <div>
+
+    <header className="header">
+      <div className="logo">Heat Path</div>
+      <button onClick={() => navigate("/path")} className="home-button"/>
+    </header>
+
+
     <div className="quiz-screen">
-      <h2>{lesson.quiz[questionIndex].question}</h2>
+      <h2>{lesson.title}</h2>
+
+      <div className="card">
+
+      <h3>{lesson.quiz[questionIndex].question}</h3>
+      </div>
       <div className="quiz-options">
         {lesson.quiz[questionIndex].options.map((option, index) => (
           <button
@@ -44,11 +57,25 @@ const Quiz = ({ markLectureCompleted }) => {
             {option}
           </button>
         ))}
+
       </div>
-      <button onClick={handleNext} className="nav-button">Next</button>
+
+
+
+
+      <div className="nav-buttons">
+        <button 
+          onClick={handleNext} 
+          className="nav-button">Next</button>
       <button onClick={() => navigate("/path")} className="nav-button">
         Back To Path
       </button>
+      </div>
+
+
+    </div>
+
+
     </div>
   );
 };

@@ -8,10 +8,20 @@ const Path = ({ completedLectures }) => {
     navigate(path);
   };
 
+  const handleHome = () => {
+    navigate("/");
+  };
+
   return (
+    <div>
+
+    <header className="header">
+      <div className="logo">Heat Path</div>
+      <button onClick={handleHome} className="home-button"/>
+    </header>
+
     <div className="path">
-      <h2>Heat Path</h2>
-      <p>YOUR PATH</p>
+      <h2>Select A Lecture</h2>
       <div className="lecture-path">
         {[1, 2, 3, 4].map((lecture, index) => (
           <div
@@ -36,6 +46,8 @@ const Path = ({ completedLectures }) => {
           </button>
         </div>
       </div>
+    </div>
+
     </div>
   );
 };
