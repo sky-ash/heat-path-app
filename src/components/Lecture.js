@@ -7,23 +7,29 @@ const Lecture = ({ markCompleted }) => {
   const { id } = useParams();
   const lesson = lessons.find(l => l.id === parseInt(id));
   const [cardIndex, setCardIndex] = useState(0);
-  const [viewedCards, setViewedCards] = useState(new Set());
+  const [viewedCards, setViewedCards] = useState(Array(lesson.cards.length).fill(false));
   const navigate = useNavigate();
 
   const handleNext = () => {
     const newIndex = (cardIndex + 1) % lesson.cards.length;
     setCardIndex(newIndex);
-    setViewedCards(new Set([...viewedCards, cardIndex]));
+    markCardAsViewed(newIndex);
   };
 
   const handlePrev = () => {
     const newIndex = (cardIndex - 1 + lesson.cards.length) % lesson.cards.length;
     setCardIndex(newIndex);
-    setViewedCards(new Set([...viewedCards, cardIndex]));
+    markCardAsViewed(newIndex);
+  };
+
+  const markCardAsViewed = (index) => {
+    const updatedViewedCards = [...viewedCards];
+    updatedViewedCards[index] = true;
+    setViewedCards(updatedViewedCards);
   };
 
   const handleMarkCompleted = () => {
-    if (viewedCards.size === lesson.cards.length - 1) {
+    if (viewedCards.every(viewed => viewed)) {
       markCompleted(parseInt(id));
       navigate(`/quiz/${id}`);
     }
@@ -44,9 +50,12 @@ const Lecture = ({ markCompleted }) => {
       </div>
       <button onClick={handlePrev} className="nav-button">Previous</button>
       <button onClick={handleNext} className="nav-button">Next</button>
-      {viewedCards.size === lesson.cards.length - 1 && (
-        <button onClick={handleMarkCompleted} className="nav-button">Mark Completed</button>
-      )}
+      <button 
+        onClick={handleMarkCompleted} 
+        className={`nav-button ${viewedCards.every(viewed => viewed) ? '' : 'locked'}`}
+      >
+        Mark Completed
+      </button>
       <button onClick={() => navigate("/path")} className="nav-button">
         Back To Path
       </button>
