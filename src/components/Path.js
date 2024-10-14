@@ -1,7 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Path = ({ completedLectures }) => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
   return (
     <div className="path">
       <h2>Heat Path</h2>
@@ -10,15 +16,24 @@ const Path = ({ completedLectures }) => {
         {[1, 2, 3, 4].map((lecture, index) => (
           <div
             key={index}
+            id={`lecture-${lecture}`}
             className={`lecture ${completedLectures + 1 >= lecture ? 'unlocked' : 'locked'}`}
           >
-            <Link to={completedLectures + 1 >= lecture ? `/lecture/${lecture}` : "#"}>
+            <button 
+              onClick={() => handleNavigation(`/lecture/${lecture}`)} 
+              disabled={completedLectures + 1 < lecture}
+            >
               {lecture}
-            </Link>
+            </button>
           </div>
         ))}
         <div className={`final-quiz ${completedLectures === 4 ? 'unlocked' : 'locked'}`}>
-          <Link to={completedLectures === 4 ? "/final-quiz" : "#"}>X</Link>
+          <button 
+            onClick={() => handleNavigation("/final-quiz")} 
+            disabled={completedLectures !== 4}
+          >
+            X
+          </button>
         </div>
       </div>
     </div>

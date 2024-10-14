@@ -49,22 +49,23 @@ const Lecture = ({ markCompleted }) => {
       <div className="card">
         <p>{lesson.cards[cardIndex]}</p>
       </div>
-      <button onClick={handlePrev} className="nav-button">Previous</button>
-      <button onClick={handleNext} className="nav-button">Next</button>
+      <div className="nav-buttons-container">
+        <button onClick={handlePrev} id="prev">Previous</button>
+        <button onClick={handleNext} id="next">Next</button>
+      </div>
       <button 
         onClick={handleMarkCompleted} 
-        className={`nav-button ${viewedCards.every(viewed => viewed) ? '' : 'locked'}`}
+        className={`nav-button ${viewedCards.every(viewed => viewed) && !isCompleted ? '' : 'locked'}`}
       >
         {isCompleted ? "Already Completed" : "Mark Completed"}
       </button>
-      {isCompleted && (
-        <button 
-          onClick={() => navigate(`/quiz/${id}`)} 
-          className="nav-button"
-        >
-          Go To Quiz
-        </button>
-      )}
+      <button 
+        onClick={() => navigate(`/quiz/${id}`)} 
+        className={`nav-button ${isCompleted ? '' : 'locked'}`}
+        title={isCompleted ? '' : 'Please complete the lecture before going to the quiz'}
+      >
+        Go To Quiz
+      </button>
       <button onClick={() => navigate("/path")} className="nav-button">
         Back To Path
       </button>
