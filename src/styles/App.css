@@ -1,15 +1,20 @@
 :root {
   --primary-color: #ff4a4a;
-  --secondary-color: #2c2c2c;
+  --primary-hover: #e94141;
+  --background-color: #1b1b1b;
+  --dark-grey: #2c2c2c;
+  --grey: grey;
   --text-color: white;
+  --correct: #28a745;
+  --wrong: #dc3545;
 }
 
 /* General app container */
 .App {
   font-family: Arial, sans-serif;
   text-align: center;
-  color: white;
-  background-color: #1b1b1b;
+  color: var(--text-color);
+  background-color: var(--background-color);
   min-height: 100vh;
   padding: 20px;
 }
@@ -33,14 +38,14 @@
   background-color: var(--primary-color);
   border: none;
   border-radius: 8px;
-  color: white;
+  color: var(--text-color);
   cursor: pointer;
   font-size: 16px;
   width: 200px;
 }
 
 .nav-button:hover {
-  background-color: #e94141;
+  background-color: var(--primary-hover);
 }
 
 /* Path Screen */
@@ -60,8 +65,8 @@
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: gray;
-  color: white;
+  background-color: var(--grey);
+  color: var(--text-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,15 +76,15 @@
 }
 
 .lecture.unlocked {
-  background-color: #ff4a4a;
+  background-color: var(--primary-color);
   pointer-events: auto;
 }
 
 .final-quiz {
   width: 60px;
   height: 60px;
-  background-color: gray;
-  color: white;
+  background-color: var(--grey);
+  color: var(--text-color);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -90,7 +95,7 @@
 }
 
 .final-quiz.unlocked {
-  background-color: gray;
+  background-color: var(--grey);
   pointer-events: auto;
 }
 
@@ -98,7 +103,7 @@
 .lecture-screen, .quiz-screen {
   margin: 0 auto;
   max-width: 400px;
-  background-color: #2c2c2c;
+  background-color: var(--dark-grey);
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
@@ -128,11 +133,11 @@
 
 /* Correct and incorrect answers */
 .correct {
-  background-color: #28a745;
+  background-color: var(--correct);
 }
 
 .incorrect {
-  background-color: #dc3545;
+  background-color: var(--wrong);
 }
 
 /* Buttons styling */
@@ -149,12 +154,12 @@ button {
 }
 
 button:hover {
-  background-color: #e94141;
+  background-color: var(--primary-hover);
 }
 
 /* Navigation Buttons */
 .nav-button {
-  background-color: #ff4a4a;
+  background-color: var(--primary-color);
   padding: 10px;
   width: 100%;
   border-radius: 10px;
@@ -166,7 +171,7 @@ button:hover {
 }
 
 .nav-button:hover {
-  background-color: #e94141;
+  background-color: var(--primary-hover);
 }
 
 /* Locked buttons */
