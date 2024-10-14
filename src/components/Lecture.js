@@ -46,12 +46,13 @@ const Lecture = ({ markCompleted }) => {
   return (
     <div className="lecture-screen" {...handlers}>
       <h2>{lesson.title}</h2>
-      <div className="card">
-        <p>{lesson.cards[cardIndex]}</p>
-      </div>
-      <div className="nav-buttons-container">
-        <button onClick={handlePrev} id="prev">Previous</button>
-        <button onClick={handleNext} id="next">Next</button>
+
+      <div className="cards-container">
+        <button onClick={handlePrev} id="prev"/>
+        <div className="card">
+          <p>{lesson.cards[cardIndex]}</p>
+        </div>
+        <button onClick={handleNext} id="next"/>
       </div>
       <button 
         onClick={handleMarkCompleted} 
